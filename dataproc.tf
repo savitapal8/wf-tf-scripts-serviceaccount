@@ -1,14 +1,10 @@
-data "google_project" "project" {
-  project_id =  "airline1-sabre-wolverine"
-}
-
 data "google_storage_project_service_account" "gcss_sa" {
    project =  "airline1-sabre-wolverine"
  }
 
 
 resource "google_kms_crypto_key" "secrets" {
- name     = "my-dev-appid-strg12-demo-key"
+ name     = "my-dev-appid-str-demo-key"
  key_ring = "projects/airline1-sabre-wolverine/locations/us/keyRings/savita-keyring-us"
  labels = {
     owner = "hybridenv"
@@ -23,7 +19,7 @@ resource "google_kms_crypto_key" "secrets" {
 }
 
 resource "google_service_account" "dataproc_sa" {
- account_id   = "dataproc12-sa"
+ account_id   = "my-dev-appid-sa-demo-dataproc"
  display_name = "DataProc Service Account"
  project      = data.google_project.project.project_id
 }
@@ -61,8 +57,8 @@ resource "google_project_iam_binding" "dataproc" {
  ]
 }
 /*
-resource "google_storage_bucket" "dataproc_staging" {
- name                        = "my-dev-appid-strg12-stage-gcsbucket"
+resource "google_storage_bucket" "dataproc_staging" { 
+ name                        = "my-dev-appid-strg-stagedemo-gcsbucket"
  project                     = "airline1-sabre-wolverine"
  location                    = "us"
  # Enable CMEK
@@ -72,7 +68,7 @@ resource "google_storage_bucket" "dataproc_staging" {
 }
 
 resource "google_storage_bucket" "dataproc_temp" {
- name                        = "my-dev-appid-strg12-temp-gcsbucket"
+ name                        = "my-dev-appid-strg-tempdemo-gcsbucket"
  project                     = "airline1-sabre-wolverine"
  location                    = "us"
  # Enable CMEK
@@ -89,7 +85,7 @@ resource "google_kms_crypto_key_iam_member" "dataproc_gcs_encryption" {
 
 resource "google_compute_firewall" "dataproc" {
  project     = "airline1-sabre-wolverine"
- name        = "allow-tcp-udp-icmp-dataproc12-fw"
+ name        = "allow-tcp-udp-icmp-dataprocdemo-fw"
  network     = "projects/airline1-sabre-wolverine/regions/us-central1/networks/us-dev-appid-syst-demo-vpc"
  description = "Enable Dataproc master and nodes connectivity"
 
@@ -112,7 +108,7 @@ resource "google_compute_firewall" "dataproc" {
 resource "google_dataproc_cluster" "example" {
  provider = google-beta # Required to enforce HTTPS config
  project  = data.google_project.project.project_id
- name     = "my-dev-appid-strg12-demo-dpcluster"
+ name     = "my-dev-appid-strg-dlpdemo-dpcluster"
  region   = "us-central1"
  labels   = {
     owner = "hybridenv"
