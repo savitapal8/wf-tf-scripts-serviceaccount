@@ -142,7 +142,7 @@ resource "google_dataproc_cluster" "example" {
      internal_ip_only       = true
      service_account         = null
      #service_account        = google_service_account.dataproc_sa.email
-     #service_account        = "dataproc-sa-compute@developer.gserviceaccount.com"
+     service_account        = "dataproc-sa-compute@developer.gserviceaccount.com"
      service_account_scopes = [
        "cloud-platform"
      ]
