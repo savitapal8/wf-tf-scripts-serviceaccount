@@ -43,11 +43,11 @@ resource "google_cloudfunctions_function" "function" {
   
   #ingress_settings = "ALLOW_INTERNAL_ONLY"
   ingress_settings = "ALLOW_ALL"
-  vpc_connector    = google_vpc_access_connector.vpc_conn_example.id
+  #vpc_connector    = google_vpc_access_connector.vpc_conn_example.id
   #vpc_connector_egress_settings = "ALL_TRAFFIC"
-  vpc_connector_egress_settings = "PRIVATE_RANGES_ONLY"
+  #vpc_connector_egress_settings = "PRIVATE_RANGES_ONLY"
   #service_account_email = google_service_account.example.email
-  service_account_email = "service-sa@appspot.gserviceaccount.com"
+  #service_account_email = "service-sa@appspot.gserviceaccount.com"
 }
 
 # IAM entry for a single user to invoke the function
