@@ -1,7 +1,10 @@
+data "google_project" "project" {
+  project_id =  "airline1-sabre-wolverine"
+}
+
 data "google_storage_project_service_account" "gcss_sa" {
    project =  "airline1-sabre-wolverine"
- }
-
+}
 
 resource "google_kms_crypto_key" "secrets" {
  name     = "my-dev-appid-str-demo-key"
