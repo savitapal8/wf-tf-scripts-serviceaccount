@@ -41,13 +41,13 @@ resource "google_cloudfunctions_function" "function" {
     GOOGLE_FUNCTION_SOURCE = "main.py"
   }
   
-  #ingress_settings = "ALLOW_INTERNAL_ONLY"
-  ingress_settings = "ALLOW_ALL"
-  #vpc_connector    = google_vpc_access_connector.vpc_conn_example.id
-  #vpc_connector_egress_settings = "ALL_TRAFFIC"
+  ingress_settings = "ALLOW_INTERNAL_ONLY"
+  #ingress_settings = "ALLOW_ALL"
+  vpc_connector    = google_vpc_access_connector.vpc_conn_example.id
+  vpc_connector_egress_settings = "ALL_TRAFFIC"
   #vpc_connector_egress_settings = "PRIVATE_RANGES_ONLY"
-  #service_account_email = google_service_account.example.email
-  service_account_email = "service-sa@appspot.gserviceaccount.com"
+  service_account_email = google_service_account.example.email
+  #service_account_email = "service-sa@appspot.gserviceaccount.com"
 }
 
 # IAM entry for a single user to invoke the function
@@ -58,6 +58,6 @@ resource "google_cloudfunctions_function_iam_member" "invoker" {
 
   role   = "roles/cloudfunctions.invoker"
   #member = "serviceAccount:demo-sentinel-sa@airline1-sabre-wolverine.iam.gserviceaccount.com"
-  #member = "serviceAccount:${google_service_account.example.email}"
-  member = "serviceAccount:service-sa@appspot.gserviceaccount.com"
+  member = "serviceAccount:${google_service_account.example.email}"
+  #member = "serviceAccount:service-sa@appspot.gserviceaccount.com"
 }
