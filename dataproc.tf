@@ -141,8 +141,8 @@ resource "google_dataproc_cluster" "example" {
      subnetwork             = "projects/airline1-sabre-wolverine/regions/us-central1/subnetworks/us-dev-appid-syst-demo-subnet"
      internal_ip_only       = true
      #service_account         = null
-     #service_account        = google_service_account.dataproc_sa.email
-     service_account        = "dataproc-sa-compute@developer.gserviceaccount.com"
+     service_account        = google_service_account.dataproc_sa.email
+     #service_account        = "dataproc-sa-compute@developer.gserviceaccount.com"
      service_account_scopes = [
        "cloud-platform"
      ]
