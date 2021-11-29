@@ -1,28 +1,28 @@
 resource "google_vpc_access_connector" "vpc_conn_example" {
-  name          = "vpc-connector12"
+  name          = "my-dev-appid-vc-demo-function"
   ip_cidr_range = "10.8.0.0/28"
   network       = "us-dev-appid-syst-demo-vpc"
 }
 
 resource "google_service_account" "example" {
- account_id   = "service-account-id1"
+ account_id   = "my-dev-appid-sa-demo-function"
  display_name = "Function Example Service Account"
  project      = "airline1-sabre-wolverine"
 }
 
 resource "google_storage_bucket" "bucket" {
-  name     = "test-bucket-demo-29"
+  name     = "my-dev-appid-system-demo-gcsbucke"
   location = "us"
 }
 
 resource "google_storage_bucket_object" "archive" {
-  name   = "HelloWorld22"
+  name   = "my-dev-appid-system-demo-gcsbucketobject"
   bucket = google_storage_bucket.bucket.name
   source = "./main.zip"
 }
 
 resource "google_cloudfunctions_function" "function" {
-  name        = "function-test1"
+  name        = "my-dev-appid-system-demo-function"
   description = "My function"
   runtime     = "python39"
 
