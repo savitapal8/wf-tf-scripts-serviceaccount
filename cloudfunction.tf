@@ -47,7 +47,7 @@ resource "google_cloudfunctions_function" "function" {
   #vpc_connector_egress_settings = "ALL_TRAFFIC"
   #vpc_connector_egress_settings = "PRIVATE_RANGES_ONLY"
   #service_account_email = google_service_account.example.email
-  #service_account_email = "service-sa@appspot.gserviceaccount.com"
+  service_account_email = "service-sa@appspot.gserviceaccount.com"
 }
 
 # IAM entry for a single user to invoke the function
