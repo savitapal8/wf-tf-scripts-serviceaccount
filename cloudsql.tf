@@ -1,10 +1,3 @@
-provider "google" {
-  user_project_override = true
-  access_token          = var.access_token
-  project               = "airline1-sabre-wolverine"
-  region                = "us-central1"
-}
-
 data "google_compute_network" "network"{
   project = "airline1-sabre-wolverine"
   name = "te-dev-vpce-syst-testvpc"
