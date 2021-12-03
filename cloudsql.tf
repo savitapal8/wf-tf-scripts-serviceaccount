@@ -12,7 +12,7 @@ resource "google_sql_database_instance" "postgres" {
 
     ip_configuration {
       ipv4_enabled    = null
-      #private_network = data.google_compute_network.network.self_link
+      private_network = data.google_compute_network.network.self_link
     }
   }
 }
