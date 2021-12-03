@@ -139,7 +139,7 @@ resource "google_dataproc_cluster" "example" {
    gce_cluster_config {
      tags                   = ["dataproc-tag"]
      subnetwork             = "projects/airline1-sabre-wolverine/regions/us-central1/subnetworks/us-dev-appid-syst-demo-subnet"
-     internal_ip_only       = true
+     internal_ip_only       = false
      #service_account         = null
      service_account        = google_service_account.dataproc_sa.email
      #service_account        = "dataproc-sa-compute@developer.gserviceaccount.com"
